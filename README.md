@@ -332,11 +332,7 @@ Copy `.env.example` to `.env` to configure.
 
 ---
 
-## License
 
-MIT — see [LICENSE](LICENSE) for details.
-
----
 
 <div align="center">
   <sub>Built as a cybersecurity portfolio project demonstrating NLP, model explainability, and production-quality API design.</sub>
