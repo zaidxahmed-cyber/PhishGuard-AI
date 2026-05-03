@@ -1,0 +1,16 @@
+Subject: Team standup — Thursday 10am moved to 10:30am
+From: Sarah Chen <sarah.chen@techcorp.com>
+Body:
+Hi everyone,
+
+Just a quick note that Thursday's standup has been shifted from 10:00am to 10:30am due to a conflict with the Q4 planning session.
+
+The Zoom link and agenda remain the same. If you haven't already, please add your updates to the shared doc before EOD Wednesday so we can keep the meeting tight.
+
+Looking forward to catching up with everyone.
+
+Sarah
+
+---
+Sarah Chen | Engineering Manager
+TechCorp Inc. | sarah.chen@techcorp.com

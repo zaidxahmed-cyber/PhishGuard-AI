@@ -1,0 +1,23 @@
+Subject: Re: Application for Senior Backend Engineer — Interview Invitation
+From: talent@stripe.com
+Body:
+Hi,
+
+Thanks so much for applying to the Senior Backend Engineer role at Stripe. We've reviewed your application and would love to chat.
+
+We'd like to schedule a 30-minute introductory call with one of our technical recruiters to discuss your background and the role in more detail.
+
+Please use the link below to pick a time that works for you:
+https://calendly.com/stripe-recruiting/intro-call
+
+A few things to know before we chat:
+- The role is on our Payments Infrastructure team (Go + distributed systems)
+- We work in a hybrid model (2 days/week in the SF or NYC office)
+- Compensation range for this level: $185,000–$230,000 base + equity
+
+Looking forward to speaking with you!
+
+Best,
+Jordan Kim
+Technical Recruiting | Stripe
+talent@stripe.com

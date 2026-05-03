@@ -1,0 +1,27 @@
+Subject: Amazon: Your order #114-8291047-3847291 has been flagged — Verify immediately
+From: Amazon Order Support <amazon-orders@amaz0n-support.hotmail.com>
+Body:
+Dear Amazon Customer,
+
+Your recent order has been flagged for suspicious activity. To prevent unauthorized charges to your account, we have placed a hold on your order and your Amazon account.
+
+Order Details:
+- Order #114-8291047-3847291
+- Item: Apple MacBook Pro 16" M3 — $2,499.99
+- Shipping to: Lagos, Nigeria
+
+If you did NOT place this order, your account has been compromised. You must verify your account IMMEDIATELY to cancel this order and secure your account.
+
+Verify Account & Cancel Order: https://amazon.com.account-security-verify.net/signin
+
+Failure to verify within 2 hours will result in:
+1. The order being shipped and charged to your payment method
+2. Your account being permanently suspended
+3. The matter being referred to our fraud investigation team
+
+Please also update your password and confirm your billing information to prevent future unauthorized access.
+
+Do not reply to this email. This is an automated security notification.
+
+Amazon Security Team
+amazon.com

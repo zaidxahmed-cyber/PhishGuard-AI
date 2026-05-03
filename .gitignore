@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.env
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Models (large files)
+models/distilbert-phishing/
+models/*.joblib
+models/*.pkl
+
+# Credentials — NEVER commit these
+credentials.json
+token.json
+
+# Data & Datasets (large files — download links in README)
+data/raw/
+data/processed/
+data/figures/
+dataset/
+
+# Internal tooling
+.code-review-graph/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

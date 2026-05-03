@@ -1,0 +1,30 @@
+Subject: This week in Python — Issue #483
+From: Python Weekly <noreply@pythonweekly.com>
+Body:
+Python Weekly — Issue #483 | November 10, 2024
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEWS AND ARTICLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Python 3.13 Released
+The Python core team has released Python 3.13 with an experimental free-threaded mode and a new REPL. Full release notes at python.org/downloads.
+
+Real Python: Building Async APIs with FastAPI and SQLModel
+A deep dive into structuring a production FastAPI app with async SQLAlchemy and Alembic migrations. https://realpython.com/fastapi-sqlmodel-async
+
+Understanding Python's GIL — and why 3.13 changes things
+An accessible explanation of the Global Interpreter Lock and what the new no-GIL mode means for CPU-bound workloads.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PACKAGES & TOOLS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+uv 0.4.18 — Rust-based pip/venv replacement just got even faster
+Polars 1.1.0 — Major release with streaming query engine improvements
+Pydantic v2.9.2 — Bug fixes and performance improvements
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+To unsubscribe, click here: https://pythonweekly.com/unsubscribe
+Python Weekly — pythonweekly.com

@@ -1,0 +1,27 @@
+Subject: URGENT: Your PayPal Account Has Been Suspended — Action Required
+From: PayPal Security <support@paypal-secure-alerts.gmail.com>
+Body:
+Dear Valued Customer,
+
+We have detected UNUSUAL ACTIVITY on your PayPal account. Your account has been temporarily SUSPENDED due to multiple failed login attempts from an unrecognized device.
+
+To restore access to your account IMMEDIATELY, you must verify your identity within the next 24 HOURS or your account will be permanently terminated.
+
+CLICK HERE TO VERIFY YOUR ACCOUNT NOW:
+http://192.168.14.32/paypal/account-verify?token=xK9mP2
+
+You will need to provide:
+- Full name and date of birth
+- Credit card number (last 4 digits will NOT be enough — we need the full number for security verification)
+- Social Security Number
+- Mother's maiden name
+
+WARNING: Failure to act within 24 hours will result in PERMANENT account closure and legal action may be initiated.
+
+Do NOT ignore this message. Your account security is at risk.
+
+Thank you for your immediate attention to this critical matter.
+
+PayPal Security Team
+© 2024 PayPal Inc. All rights reserved.
+Report phishing: spoof@paypal.com (but do NOT reply to this email)

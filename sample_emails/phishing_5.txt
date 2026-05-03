@@ -1,0 +1,32 @@
+Subject: Security Alert: Suspicious Login Detected on Your Microsoft Account
+From: Microsoft Account Team <microsoftsupport@outlook-security-alert.com>
+Body:
+Microsoft Account Security Alert
+
+A sign-in to your Microsoft account was blocked.
+
+Sign-in details:
+Country/Region: Russia (Moscow)
+IP Address: 185.220.101.47
+Date: Today at 03:42 AM
+Device: Unknown Windows Device
+Browser: Chrome 118
+
+If this wasn't you, your account password may have been stolen. Act now before your account is used for criminal activity.
+
+SECURE YOUR ACCOUNT NOW: http://tinyurl.com/ms-account-secure
+
+To protect your account, we require you to:
+1. Click the link above to verify your identity
+2. Confirm your Microsoft account password
+3. Provide your backup email address and phone number
+4. Update your credit card information on file to verify your identity
+
+IMPORTANT: Your Microsoft 365 subscription, OneDrive files (2.4 TB), and Outlook emails are at risk.
+
+If you do not verify within 12 hours, we will be forced to suspend your account and all associated services to protect other users on our platform.
+
+This email cannot receive replies. Do not share this link with anyone.
+
+Microsoft Account Team
+microsoft.com | Privacy Statement | Terms of Service

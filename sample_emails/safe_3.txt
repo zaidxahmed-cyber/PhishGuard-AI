@@ -1,0 +1,22 @@
+Subject: Your order has shipped — Arrives Tuesday
+From: Amazon.com <shipment-tracking@amazon.com>
+Body:
+Your package is on the way!
+
+Order: #112-4839201-7483921
+Estimated delivery: Tuesday, November 12
+
+Items in this shipment:
+- Anker USB-C Hub, 7-in-1 (Qty: 1)
+
+Tracking number: 1Z999AA10123456784
+Carrier: UPS
+
+You can track your package using the link below:
+https://www.amazon.com/gp/your-account/ship-track?ie=UTF8&itemId=X93828
+
+If you have any questions about your order, visit your Orders page or contact Amazon Customer Service.
+
+Thank you for shopping with Amazon.
+
+Amazon.com

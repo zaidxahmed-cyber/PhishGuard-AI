@@ -1,0 +1,26 @@
+Subject: Your GitHub pull request has been merged
+From: GitHub <noreply@github.com>
+Body:
+Hey there,
+
+Pull request #247 "feat: add token refresh logic to auth middleware" has been successfully merged into main by @alexjohnson.
+
+Repository: your-org/backend-api
+Branch: feat/token-refresh → main
+Commits: 3 commits
+Files changed: 7 files
+
+You can view the merge here:
+https://github.com/your-org/backend-api/pull/247
+
+The branch feat/token-refresh has been automatically deleted.
+
+Next steps:
+- The CI/CD pipeline will deploy these changes to staging within ~8 minutes.
+- A Datadog monitor alert has been set for the new auth endpoint.
+
+Thanks for your contribution!
+
+—
+The GitHub Team
+github.com | You're receiving this because you're subscribed to this repository.
