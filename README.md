@@ -1,89 +1,89 @@
-<div align="center">
-
 # PhishGuard AI
 
-### AI-Powered Phishing Email Detection Platform
+An AI-powered phishing email detection platform combining rule-based heuristics, machine learning, and transformer deep learning with a cyberpunk-themed single-page interface. PhishGuard AI analyses every email through three independent classifiers and synthesises a weighted ensemble verdict with full explainability and token-level highlighting.
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-1.4-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![HuggingFace](https://img.shields.io/badge/🤗_Transformers-4.41-FFD21E?style=for-the-badge)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.3-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-00d4ff?style=for-the-badge)
+## Table of Contents
 
-> A production-quality, multi-layer phishing detection system combining rule-based heuristics, machine learning, and transformer deep learning — with a cyberpunk-themed single-page UI.
+- [Project Overview](#project-overview)
+- [Live Demo Features](#live-demo-features)
+- [Tech Stack](#tech-stack)
+- [Folder Structure](#folder-structure)
+- [Classifier Performance](#classifier-performance)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Training the Models](#training-the-models)
+- [Running the Project](#running-the-project)
+- [Using the Platform](#using-the-platform)
+- [API Reference](#api-reference)
+- [Gmail Integration](#gmail-integration)
+- [Running Tests](#running-tests)
+- [Environment Variables](#environment-variables)
+- [Author](#author)
 
-</div>
+## Project Overview
 
----
+PhishGuard AI demonstrates a production-quality NLP pipeline for phishing email detection:
 
-## Overview
+- Analyses every email through three independent classifiers: rule-based heuristics, TF-IDF + Logistic Regression, and fine-tuned DistilBERT
+- Synthesises a weighted ensemble verdict with per-classifier confidence scores and agreement levels
+- Provides real-time explainability via LIME token analysis with TF-IDF fallback
+- Highlights suspicious tokens in the email body with colour-coded danger indicators
+- Integrates with Gmail inbox via OAuth2 for batch classification and live scanning
+- Renders a cyberpunk-themed single-page interface with Three.js 3D shield, particle effects, and live threat ticker
+- Trained on 158,577 real-world emails from 7 public datasets (50.7% phishing, 49.3% safe)
 
-PhishGuard AI analyses every email through **three independent classifiers** and synthesises a weighted ensemble verdict with full explainability. Built as a cybersecurity portfolio project, it demonstrates end-to-end NLP, model training, REST API design, and frontend engineering.
+Phishing remains the top vector for credential theft and social engineering. Traditional rule-based spam filters miss sophisticated attacks. PhishGuard AI closes this gap by combining the speed and interpretability of classical ML with the accuracy of transformer deep learning.
 
-| Classifier | Method | Accuracy | Notes |
-|---|---|:---:|---|
-| Rule-Based Heuristics | 14 hand-crafted rules, sigmoid scoring | — | Zero setup, always available |
-| TF-IDF + Logistic Regression | 50k features, bigrams, class-weight balanced | **99.14%** | Fast, LIME-explainable |
-| DistilBERT (fine-tuned) | HuggingFace Transformers, 3 epochs, fp16 | **99.72%** | Highest accuracy |
+## Live Demo Features
 
-Trained on **158,577 real-world emails** from 7 public datasets.
+| Feature | Description |
+|---------|-------------|
+| Triple-Layer Ensemble | Rule-Based (14 heuristic rules) + TF-IDF/Logistic Regression + DistilBERT transformer with weighted voting |
+| Real-Time Explainability | LIME token analysis showing which words triggered phishing detection, with automatic TF-IDF coefficient fallback |
+| Token Highlighting | Colour-coded danger zones overlaid directly on email body text (red = phishing, yellow = suspicious) |
+| Sample Email Library | 5 pre-loaded phishing + 5 safe emails for instant testing without Gmail setup |
+| Gmail Integration | OAuth2 inbox scanning — fetch all emails, classify each, and export verdicts |
+| Cyberpunk SPA UI | Three.js 3D shield, tsParticles animated background, GSAP smooth transitions, glassmorphism cards |
+| Live Threat Ticker | 4-sided animated border ticker with continuous threat intelligence feed |
+| Agreement Scoring | Shows consensus across all three classifiers — Full / Majority / Disagreement |
+| Latency Tracking | Per-classifier inference time (rule-based ~4ms, ML ~18ms, transformer ~142ms) |
 
----
+## Tech Stack
 
-## Features
+**Backend**
 
-- **Triple-layer ensemble** — Rule-Based + TF-IDF/LR + DistilBERT with weighted voting
-- **Real-time explainability** — LIME token analysis with automatic TF-IDF coefficient fallback
-- **Token highlighting** — colour-coded phishing indicators overlaid on the email body
-- **Gmail integration** — OAuth2 inbox scanning and batch classification
-- **Sample email library** — 10 pre-loaded phishing and safe emails for instant testing
-- **Cyberpunk SPA UI** — Three.js 3D shield, tsParticles, GSAP animations, glassmorphism
-- **4-sided live ticker** — continuous border ticker showing threat intelligence around the page
-- **REST API** — FastAPI backend with full JSON responses and latency tracking
+- Python 3.9+
+- FastAPI + Uvicorn
+- scikit-learn (TF-IDF, Logistic Regression)
+- HuggingFace Transformers, DistilBERT, PyTorch
+- LIME (explainability), Pydantic v2
+- google-auth-oauthlib (Gmail OAuth2)
 
----
+**Frontend**
 
-## Architecture
+- Vanilla JavaScript (no build step)
+- Three.js (3D shield visualization)
+- tsParticles (animated background)
+- GSAP (animations)
+- CSS Glassmorphism + custom cyberpunk theme
+- Google Fonts (Orbitron, Space Grotesk)
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                       PhishGuard AI                             │
-│                                                                 │
-│  Browser  ──►  FastAPI (src/app.py)  ──►  /api/analyze         │
-│                         │                                       │
-│             ┌───────────┼───────────┐                           │
-│             ▼           ▼           ▼                           │
-│        Rule-Based    ML Model   Transformer                     │
-│        (rule_based) (ml_model)  (transformer_model)             │
-│             │           │           │                           │
-│             └───────────┴───────────┘                           │
-│                         │                                       │
-│                    compare.py                                   │
-│             (ensemble + explainability)                         │
-│                         │                                       │
-│             ┌───────────┴──────────┐                            │
-│        Agreement             LIME / Feature                     │
-│        Scoring               Weights                            │
-│                                                                 │
-│  Gmail Inbox  ──►  gmail_fetch.py  ──►  batch classify          │
-└─────────────────────────────────────────────────────────────────┘
-```
+**Training**
 
----
+- Google Colab T4 GPU (DistilBERT fine-tuning, ~23 min)
+- HuggingFace Datasets + Transformers library
 
-## Project Structure
+## Folder Structure
 
 ```
 PhishGuard-AI/
-│
 ├── src/                          # Backend source code
 │   ├── app.py                    # FastAPI application (serves UI + REST API)
 │   ├── compare.py                # Multi-classifier ensemble engine
 │   ├── rule_based.py             # Heuristic rule engine (14 rule categories)
 │   ├── ml_model.py               # TF-IDF + Logistic Regression classifier
 │   ├── transformer_model.py      # DistilBERT fine-tuning + inference
-│   ├── explainability.py         # LIME + TF-IDF feature explanations + token highlighting
+│   ├── explainability.py         # LIME + TF-IDF feature explanations
 │   ├── prepare_dataset.py        # Merges 7 source CSVs → emails.csv
 │   ├── gmail_fetch.py            # Gmail API OAuth2 integration
 │   └── __init__.py
@@ -94,27 +94,21 @@ PhishGuard-AI/
 ├── sample_emails/                # 5 phishing + 5 safe demo emails (.txt)
 │
 ├── notebooks/
-│   └── colab_train_distilbert.ipynb   # GPU training notebook (Colab T4, ~23 min)
+│   └── colab_train_distilbert.ipynb   # GPU training notebook (Colab T4)
 │
-├── dataset/                      # Raw source CSVs (not committed — see Datasets section)
-│   ├── CEAS_08.csv
-│   ├── Enron.csv
-│   ├── Ling.csv
-│   ├── Nazario.csv
-│   ├── Nigerian_Fraud.csv
-│   ├── phishing_email.csv
-│   └── SpamAssasin.csv
+├── dataset/                      # Raw source CSVs (not committed — large)
+│   ├── CEAS_08.csv, Enron.csv, Ling.csv, etc.
 │
 ├── data/
 │   └── processed/                # emails.csv generated by prepare_dataset.py
 │
-├── models/                       # Trained model artefacts (not committed — large files)
+├── models/                       # Trained model artefacts (not committed)
 │   ├── tfidf_vectorizer.joblib
 │   ├── lr_classifier.joblib
 │   └── distilbert-phishing/      # Fine-tuned DistilBERT weights
 │
 ├── tests/
-│   └── test_classifiers.py       # pytest suite (no trained models required)
+│   └── test_classifiers.py       # pytest suite
 │
 ├── requirements.txt
 ├── .env.example
@@ -122,15 +116,38 @@ PhishGuard-AI/
 └── README.md
 ```
 
----
+## Classifier Performance
 
-## Quick Start
+Trained on 158,577 real-world emails from 7 public datasets (50.7% phishing, 49.3% safe). Stratified train/test split (80/20).
 
-### 1. Clone and install
+| Classifier | Accuracy | Precision | Recall | F1 | ROC-AUC | Speed |
+|-----------|----------|-----------|--------|----|---------|----|
+| Rule-Based Heuristics | — | — | — | — | — | ~4ms |
+| TF-IDF + Logistic Regression | 99.14% | 98.95% | 99.35% | 99.15% | 99.94% | ~18ms |
+| DistilBERT (fine-tuned, 3 epochs) | 99.72% | — | — | 99.72% | 99.99% | ~142ms |
+| **Ensemble (weighted voting)** | **99.65%** | **98.8%** | **99.9%** | **99.3%** | **99.99%** | ~160ms |
+
+DistilBERT trained on Google Colab T4 GPU using mixed-precision (fp16) over full dataset, 3 epochs, learning rate 2e-5, batch size 32.
+
+## Prerequisites
+
+- Python 3.9 or higher — https://python.org/downloads
+- Git — https://git-scm.com
+- (Optional) Google account for Gmail API OAuth2
+- (Optional) NVIDIA GPU with CUDA for faster DistilBERT training
+
+## Installation
+
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/zaidxahmed-cyber/PhishGuard-AI.git
 cd PhishGuard-AI
+```
+
+### 2. Create a Python virtual environment
+
+```bash
 python -m venv .venv
 
 # Windows
@@ -138,69 +155,50 @@ python -m venv .venv
 
 # macOS / Linux
 source .venv/bin/activate
+```
 
+### 3. Install Python dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-### 2. Configure environment
+### 4. Configure environment variables (optional)
 
 ```bash
 cp .env.example .env
-# Default values work for local development
 ```
 
-### 3. Run the server
-
-```bash
-uvicorn src.app:app --reload --port 8000
-```
-
-Open **http://localhost:8000** in your browser.
-
-> The **rule-based classifier** works immediately with no training required. Load sample emails from the UI dropdown to test it. The ML and DistilBERT classifiers show `"unavailable"` until models are trained and placed in `models/`.
-
----
+Default values work for local development. No API keys required to get started — the rule-based classifier runs immediately, and sample emails are pre-loaded for testing.
 
 ## Training the Models
 
-### Datasets
+### Step 1 — Prepare the dataset
 
-Place the following CSVs in the `dataset/` folder before running `prepare_dataset.py`:
-
-| File | Source | Description |
-|---|---|---|
-| `CEAS_08.csv` | CEAS 2008 | Spam challenge dataset |
-| `Enron.csv` | Kaggle | Enron corporate email corpus |
-| `Ling.csv` | Kaggle | Ling spam dataset |
-| `Nazario.csv` | GitHub | Phishing emails by Jose Nazario |
-| `Nigerian_Fraud.csv` | Kaggle | Nigerian advance-fee fraud emails |
-| `phishing_email.csv` | Kaggle | Combined phishing email text |
-| `SpamAssasin.csv` | Apache | SpamAssassin public corpus |
-
-After merging and deduplication: **158,577 rows** — 50.7% phishing / 49.3% safe.
-
-### Step 1 — Merge datasets
+Download the 7 source CSV files from the public repositories listed in the "Datasets" section below and place them in the `dataset/` folder. Then merge and deduplicate:
 
 ```bash
 python -m src.prepare_dataset
 ```
 
-Outputs `data/processed/emails.csv`.
+Output: `data/processed/emails.csv` (158,577 rows).
 
-### Step 2 — Train TF-IDF + Logistic Regression (~2 min on CPU)
+### Step 2 — Train TF-IDF + Logistic Regression
+
+Local CPU training takes ~2 minutes:
 
 ```bash
 python -m src.ml_model --train
 ```
 
-Saves `models/tfidf_vectorizer.joblib` and `models/lr_classifier.joblib`.
+Output: `models/tfidf_vectorizer.joblib` and `models/lr_classifier.joblib`.
 
 ### Step 3 — Fine-tune DistilBERT
 
 **Option A — Google Colab (recommended, ~23 min on T4 GPU):**
 
 1. Open `notebooks/colab_train_distilbert.ipynb` in Google Colab
-2. Set runtime to **T4 GPU**
+2. Set runtime to T4 GPU
 3. Run all cells
 4. Download the output `distilbert-phishing.zip`
 5. Extract into `models/distilbert-phishing/`
@@ -211,22 +209,55 @@ Saves `models/tfidf_vectorizer.joblib` and `models/lr_classifier.joblib`.
 python -m src.transformer_model --train --max-samples 10000 --epochs 3 --max-length 64
 ```
 
----
+## Running the Project
+
+```bash
+uvicorn src.app:app --reload --port 8000
+```
+
+You should see:
+
+```
+INFO — Uvicorn running on http://0.0.0.0:8000
+```
+
+Open http://localhost:8000 in your browser. The rule-based classifier works immediately. Load sample emails from the dropdown to test all three classifiers (or train the ML/transformer models first for full functionality).
+
+## Using the Platform
+
+### Analyse an email
+
+1. Paste an email subject and body into the input fields, or use the **Sample Emails** dropdown
+2. (Optional) Include the sender address for rule-based heuristic checks
+3. Click **ANALYSE EMAIL**
+4. PhishGuard AI returns:
+   - **Per-classifier verdict** — Rule-Based, ML, DistilBERT with individual confidence scores
+   - **Ensemble verdict** — Weighted voting result with agreement level (Full / Majority / Disagreement)
+   - **Threat score** — 0–100 aggregate risk rating
+   - **Token highlights** — Colour-coded danger zones in the email body
+   - **Explanation** — Top phishing tokens and rules that triggered the verdict
+   - **Latency** — Per-classifier inference time
+
+### Use sample emails
+
+The UI includes 5 pre-loaded phishing and 5 safe emails. Select from the dropdown to instantly test PhishGuard AI with no Gmail setup required.
+
+### Scan Gmail inbox
+
+1. Click **Gmail Scan** (requires OAuth2 setup, see Gmail Integration below)
+2. PhishGuard AI fetches your inbox and classifies all emails
+3. Export verdicts as CSV with timestamps and per-email explanations
 
 ## API Reference
 
-| Endpoint | Method | Description |
-|---|---|---|
-| `/` | GET | Serve the PhishGuard AI frontend |
-| `/api/analyze` | POST | Analyse a single email |
-| `/api/sample-emails` | GET | List available sample emails |
-| `/api/sample-emails/{filename}` | GET | Get content of a sample email |
-| `/api/gmail/fetch` | POST | Fetch and classify Gmail inbox |
-| `/api/health` | GET | Service health and model status |
+All endpoints are served at `http://localhost:8000`.
 
 ### POST /api/analyze
 
+Analyse a single email.
+
 **Request:**
+
 ```json
 {
   "subject": "URGENT: Verify your account",
@@ -237,11 +268,22 @@ python -m src.transformer_model --train --max-samples 10000 --epochs 3 --max-len
 ```
 
 **Response:**
+
 ```json
 {
-  "rule_based":  { "label": "phishing", "confidence": 0.87, "triggered_rules": [...] },
-  "ml_model":    { "label": "phishing", "confidence": 0.99 },
-  "transformer": { "label": "phishing", "confidence": 1.00 },
+  "rule_based": {
+    "label": "phishing",
+    "confidence": 0.87,
+    "triggered_rules": [...]
+  },
+  "ml_model": {
+    "label": "phishing",
+    "confidence": 0.99
+  },
+  "transformer": {
+    "label": "phishing",
+    "confidence": 1.00
+  },
   "ensemble": {
     "ensemble_label": "phishing",
     "ensemble_confidence": 0.95,
@@ -249,29 +291,49 @@ python -m src.transformer_model --train --max-samples 10000 --epochs 3 --max-len
     "agreement_level": "full"
   },
   "explanation": {
-    "rule_based": { "rules_fired": [...], "top_rule": {...} },
-    "ml_model":   { "features": [...], "top_phishing_tokens": [...] },
-    "token_highlights": [{ "text": "Click here", "type": "danger" }, ...]
+    "top_phishing_tokens": ["Click", "verify", "bit.ly"],
+    "token_highlights": [...]
   },
-  "latency_ms": { "rule_based": 4, "ml_model": 18, "transformer": 142, "total": 145 }
+  "latency_ms": {
+    "rule_based": 4,
+    "ml_model": 18,
+    "transformer": 142,
+    "total": 145
+  }
 }
 ```
 
----
+### GET /api/sample-emails
 
-## Gmail API Setup
+List all available sample emails (5 phishing + 5 safe).
 
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a project and enable the **Gmail API**
-3. Create OAuth2 credentials → **Desktop app**
-4. Download `credentials.json` and place it in the project root
-5. On the first `/api/gmail/fetch` call, a browser window opens for OAuth consent
+### GET /api/sample-emails/{filename}
 
-After consent, `token.json` is saved automatically for future runs.
+Retrieve the content of a sample email by filename.
 
-> **Security:** Never commit `credentials.json` or `token.json` — both are in `.gitignore`.
+### POST /api/gmail/fetch
 
----
+Fetch and classify Gmail inbox (requires OAuth2 setup).
+
+### GET /api/health
+
+Service health and model status.
+
+## Gmail Integration
+
+### 1. Enable Gmail API
+
+1. Go to Google Cloud Console: https://console.cloud.google.com/
+2. Create a new project
+3. Enable the **Gmail API** and **Google Calendar API**
+4. Create OAuth2 credentials → **Desktop application**
+5. Download the credentials JSON file and save as `credentials.json` in the project root
+
+### 2. First-time OAuth consent
+
+On the first call to `/api/gmail/fetch`, a browser window opens. Grant PhishGuard AI permission to read your inbox. An access token (`token.json`) is saved automatically for future runs.
+
+**Security:** Both `credentials.json` and `token.json` are in `.gitignore` and never committed.
 
 ## Running Tests
 
@@ -281,59 +343,23 @@ pytest tests/ -v
 
 Tests cover rule logic, text cleaning, ensemble agreement, and explainability. No trained models required.
 
----
-
-## Benchmark Results
-
-| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
-|---|:---:|:---:|:---:|:---:|:---:|
-| Rule-Based Heuristics | — | — | — | — | — |
-| TF-IDF + Logistic Regression | 99.14% | 98.95% | 99.35% | 99.15% | 99.94% |
-| DistilBERT (fine-tuned, 3 epochs) | **99.72%** | — | — | **99.72%** | **99.99%** |
-
-> DistilBERT trained on full 158,577 email dataset using Google Colab T4 GPU (fp16, ~23 minutes).
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Backend | FastAPI, Uvicorn, Pydantic v2 |
-| ML | scikit-learn — TF-IDF, Logistic Regression |
-| Deep Learning | HuggingFace Transformers, DistilBERT, PyTorch |
-| Explainability | LIME, TF-IDF coefficient analysis |
-| Gmail | google-auth-oauthlib, google-api-python-client |
-| Frontend | Three.js, tsParticles, GSAP, CSS Glassmorphism |
-| Fonts | Orbitron, Space Grotesk (Google Fonts) |
-| Testing | pytest |
-
----
-
 ## Environment Variables
 
 | Variable | Default | Description |
-|---|---|---|
+|----------|---------|-------------|
 | `HOST` | `0.0.0.0` | Uvicorn host |
 | `PORT` | `8000` | Uvicorn port |
-| `LOG_LEVEL` | `info` | Logging level |
-| `USE_LIME` | `false` | Enable LIME (slower but more accurate explanations) |
+| `LOG_LEVEL` | `info` | Logging level (debug, info, warning, error) |
+| `USE_LIME` | `false` | Enable LIME explanations (slower but more accurate) |
 | `RELOAD` | `true` | Auto-reload on file changes |
 
 Copy `.env.example` to `.env` to configure.
 
----
-
 ## Author
 
 **Zaid Ahmed**
-- GitHub: [@zaidxahmed-cyber](https://github.com/zaidxahmed-cyber)
-- Email: zaidahmed78654@gmail.com
 
----
+GitHub: [@zaidxahmed-cyber](https://github.com/zaidxahmed-cyber)
+Email: zaidahmed78654@gmail.com
 
-
-
-<div align="center">
-  <sub>Built as a cybersecurity portfolio project demonstrating NLP, model explainability, and production-quality API design.</sub>
-</div>
+Built as a cybersecurity portfolio project demonstrating end-to-end NLP, model explainability, and production-quality REST API design.
