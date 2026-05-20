@@ -359,7 +359,6 @@ Copy `.env.example` to `.env` to configure.
 
 **Zaid Ahmed**
 
-GitHub: [@zaidxahmed-cyber](https://github.com/zaidxahmed-cyber)
 Email: zaidahmed78654@gmail.com
 
-Built as a cybersecurity portfolio project demonstrating end-to-end NLP, model explainability, and production-quality REST API design.
+
